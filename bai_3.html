@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 3</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+        }
+
+        tbody {
+            background-color: #c0f4f4;
+            color: #0b0b0b;
+            font-family: VnArial;
+            font-weight: bold;
+        }
+
+        h2 {
+            color: #23085a;
+        }
+
+        td, th {
+            padding: 20px;
+            border: 1px solid black;
+        }
+
+        th {
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            background-color: #1b13a3;
+            border-color: white;
+        }
+
+        td {
+            color: #5F6062;
+            font-size: 13px;
+            padding: 20px 20px 20px 20px;
+            border-bottom: 1px solid #E0E0E0;
+            text-align: center;
+        }
+
+        .btn-them {
+            background-color: #c6ec7e;
+            color: #0b0b0b;
+        }
+    </style>
+</head>
+<body>
+<h1>Quản Lí Sách</h1>
+<button class="btn-them" onclick="themSach()">Thêm Sách</button>
+<table>
+    <thead>
+    <tr>
+        <th>Mã số sách</th>
+        <th>Tên Sách</th>
+        <th>Năm Suất Bản</th>
+        <th>Số Quyển</th>
+        <th>Tình Trạng</th>
+    </tr>
+    </thead>
+    <tbody id="t-body"></tbody>
+</table>
+<script>
+    class Sach {
+        constructor(maSoSach, tenSach, namXuatBan, soQuyen, tinhTrang) {
+            this.maSoSach = maSoSach;
+            this.tenSach = tenSach;
+            this.namXuatBan = namXuatBan;
+            this.soQuyen = soQuyen;
+            this.tinhTrang = tinhTrang;
+        }
+
+        getMaSoSach() {
+            return this.maSoSach;
+        }
+
+        getTenSach() {
+            return this.tenSach;
+        }
+
+        getNamXuatBan() {
+            return this.namXuatBan;
+        }
+
+        getSoQuyen() {
+            return this.soQuyen;
+        }
+
+        getTinhTrang() {
+            return this.tinhTrang;
+        }
+
+        setMaSoSach(maSoSach) {
+            this.maSoSach = maSoSach;
+        }
+
+        setTenSach(tenSach) {
+            this.tenSach = tenSach;
+        }
+
+        setNamXuatBan(namXuatBan) {
+            this.namXuatBan = maSoSach;
+        }
+
+        setSoQuyen(soQuyen) {
+            this.soQuyen = soQuyen;
+        }
+
+        setTinhTrang(tinhTrang) {
+            this.tinhTrang = tinhTrang;
+        }
+    }
+
+    let danhSachSach = [new Sach(12345, "Toán", 2000, 3, true),
+        new Sach(23456, "Văn", 1998, 4, true),
+        new Sach(37456, "Tiếng Anh", 1999, 5, false)];
+
+    function hienThiDanhSach() {
+        let text = "";
+        danhSachSach.forEach((item, index) => {
+            text += ` <tr>
+                         <td>${item.maSoSach}</td>
+                         <td>${item.tenSach}</td>
+                         <td>${item.namXuatBan}</td>
+                         <td>${item.soQuyen}</td>
+                         <td>${item.tinhTrang}</td>
+                         </tr>`
+        })
+        document.getElementById("t-body").innerHTML = text;
+    }
+
+    hienThiDanhSach();
+
+    function themSach() {
+        let maSoSach = prompt("Nhập mã số sách");
+        let tenSach = prompt("Nhập tên sách");
+        let namXuatBan = prompt("Nhập năm suất bản");
+        let soQuyen = prompt("Nhập số quyển");
+        let tinhTrang = prompt("Nhập tình trạng");
+        let sach = new Sach(maSoSach, tenSach, namXuatBan, soQuyen, tinhTrang);
+        danhSachSach.push(sach);
+        hienThiDanhSach();
+    }
+
+</script>
+</body>
+</html>

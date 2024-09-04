@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 2</title>
+</head>
+<body>
+<script>
+    function tongCacUoc(so) {
+        let tong = 0;
+        for (let i = 1; i <= so / 2; i++) {
+            if (so % i === 0) {
+                tong += i;
+            }
+        }
+        return tong;
+    }
+
+    function capSoThanThiet(so1, so2) {
+        let tong1 = tongCacUoc(so1);
+        let tong2 = tongCacUoc(so2);
+
+        return tong1 === so2 && tong2 === so1;
+    }
+
+    document.write(capSoThanThiet(220, 284) + "<br>");
+    document.write(capSoThanThiet(123, 456));
+</script>
+</body>
+</html>
